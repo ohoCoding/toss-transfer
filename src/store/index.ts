@@ -15,6 +15,8 @@ interface State {
     account: string;
     type: string;
   };
+  saveAccountId: (id: number) => void;
+  setSource: (account: string, balance: number) => void;
 }
 
 const init = {
@@ -34,8 +36,11 @@ const init = {
   },
 };
 
-const useStore = create<State>()(() => ({
+const useStore = create<State>()((set) => ({
   ...init,
+  saveAccountId: (id) => set({ accountId: id }),
+  setSource: (account: string, balance: number) =>
+    set({ source: { account, balance } }),
 }));
 
 export default useStore;
