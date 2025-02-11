@@ -34,7 +34,7 @@ const init = {
   },
 };
 
-const useStore = create<State>()((set) => ({
+const useStore = create<State>()(() => ({
   ...init,
 }));
 
